@@ -1,21 +1,13 @@
-// First we'll check if “Hello World” is logged in the browser console once you open your webpage.
 console.log("Hello World");
 
-// Set the last choice as rock
 let lastChoice = "rock";
 
-// Initialize the Human and Computer Scores
 let humanScore = 0;
 let computerScore = 0;
 
-// For the Human and Computer Choices
 let humanChoice = "";
-let computerChoice = "";
+let ComputerChoice = "";
 
-
-
-// Create a function to get the Computer Choice
-// Write the logic to get the Computer choice
 function getComputerChoice() {
     let choice = "";
     let rand = Math.random();
@@ -47,16 +39,13 @@ function getComputerChoice() {
     lastChoice = choice;
 
     return choice;
-
 }
 
-// Create a function to get the Human Choice
-// Write the logic to get the human choice
-function getHumanChoice() {
-    if (!text) text = "Select your move:";
+function getHumanChoice(text) {
+    if (!text) text = "Enter your move:";
 
     let input = prompt(text);
-    console.log("Player selected: " + input);
+    console.log("Player entered: " + input);
 
     input = input.toUpperCase();
 
@@ -82,18 +71,17 @@ function getHumanChoice() {
     }
 
     if (input === "") {
-        return getHumanChoice("Please Select: Rock, Paper Or Scissors");
+        return getHumanChoice("Please Enter: Rock, Paper Or Scissors");
     }
 
     return input;
-
 }
 
-let selectFX = new Audio('Audio/select.wav');
-let select2FX = new Audio('Audio/select2.wav');
-let winFX = new Audio('Audio/win.wav');
-let loseFX = new Audio('Audio/lose.wav');
-let restartFX = new Audio('Audio/restart.wav');
+let selectFX = new Audio('audio/select.wav');
+let select2FX = new Audio('audio/select2.wav');
+let winFX = new Audio('audio/win.wav');
+let loseFX = new Audio('audio/lose.wav');
+let restartFX = new Audio('audio/restart.wav');
 
 function getHumanChoiceUI(input) {
     selectFX.play();
@@ -126,7 +114,7 @@ function getHumanChoiceUI(input) {
 }
 
 const resultText = document.querySelector("#resultText");
-resultText.textContent = "Pick your choice!";
+resultText.textContent = "Select your choice!";
 
 const humanScoreText = document.querySelector("#humanScore");
 const computerScoreText = document.querySelector("#computerScore");
@@ -138,7 +126,7 @@ restartButton.addEventListener("click", () => {
 
     updateScores();
 
-    resultText.textContent = "Pick your choice!";
+    resultText.textContent = "Select your choice!";
 
     restartButton.style.display = "none";
 });
@@ -180,9 +168,6 @@ function updateScores() {
     computerScoreText.textContent = `Computer Score: ${computerScore}`;
 }
 
-
-// Create a new function named playRound
-// Write the logic to play a single round
 function playRound(humanChoice, computerChoice) {
     let winner = "tie";
     let message = "Tie! Try again";
@@ -218,7 +203,7 @@ function playRound(humanChoice, computerChoice) {
     else if (humanChoice = "scissors") {
         if (computerChoice === "rock") {
             winner = "computer";
-            message = "You Lose! Rock beats Scissors!";
+            message = "You Loose! Rock beats Scissors!";
         }
         else if (computerChoice === "paper") {
             winner = "player";
@@ -243,8 +228,6 @@ function playRound(humanChoice, computerChoice) {
     return message;
 }
 
-// Create a new function named playGame
-// Write the logic to play the entire game
 function playGame() {
     for (i = 0; i < 5; i++) {
         alert(playRound(getHumanChoice(), getComputerChoice()));
@@ -256,10 +239,17 @@ function playGame() {
     }
     else if (computerScore > humanScore) {
         console.log("Computer Wins: " + computerScore + " > " + humanScore);
-        alert("You Lose! Computer score: " + computerScore + " Your score: " + humanScore);
+        alert("You Loose! Computer score: " + computerScore + " Your score: " + humanScore);
     }
     else {
         console.log("Draw: Computer: " + computerScore + " Player: " + humanScore);
         alert("Draw! Your score: " + humanScore + " Computer score: " + computerScore);
     }
 }
+
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+
+
+//playGame();
