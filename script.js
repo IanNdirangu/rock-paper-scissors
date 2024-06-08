@@ -203,7 +203,7 @@ function playRound(humanChoice, computerChoice) {
     else if (humanChoice = "scissors") {
         if (computerChoice === "rock") {
             winner = "computer";
-            message = "You Loose! Rock beats Scissors!";
+            message = "You Lose! Rock beats Scissors!";
         }
         else if (computerChoice === "paper") {
             winner = "player";
